@@ -1,0 +1,26 @@
+<section class="container main current">
+  <div class="card shadow-lg rounded">
+    <div class="card-img-top"></div>
+    <div class="card-body">
+      <h5 class="card-title">Type your local</h5>
+      <div class="form-group">
+        <input [(ngModel)]="selectedCity" typeaheadOptionField="title" placeholder="Start to type" [typeahead]="states"
+          [typeaheadOptionsLimit]="7" (typeaheadOnSelect)="typeaheadOnSelect($event)" typeaheadWaitMs="1000"
+          class="form-control">
+      </div>
+    </div>
+  </div>
+  <app-weather 
+    [data]="currentWeatherData"
+    (onAdd)="addToFavorite($event)"
+  ></app-weather>
+</section>
+<section class="container main favorite">
+  <app-weather 
+    *ngFor="let favoriteItem of favoriteData; let i = index"
+    [data]="favoriteItem"
+    action = 'favorite'
+    (onDelete)="removeToFavorite($event)"
+  >
+  </app-weather>
+</section>

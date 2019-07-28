@@ -1,0 +1,57 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+
+  }
+
+  100% {
+
+    opacity: 1;
+  }
+}
+  
+:host {
+  background: #eee;
+  background: linear-gradient(240deg, rgba(150, 50, 50, 0.3), rgba(0, 0, 200, 0));
+  display: block;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+
+  .card-img-top {
+    background: url('../assets/wb.jpg') center/cover;
+    height: 30vh;
+    min-height: 300px;
+  }
+
+  .card {
+    padding-top: 15px;
+    margin-right: 15px;
+    width: 50vw;
+    height: 47vh;
+    min-height: 480px;
+    z-index: 1;
+
+  }
+}
+
+.favorite {
+  flex-wrap: wrap;
+
+  app-weather {
+    margin: 3px;
+    animation: fade-in .6s linear;
+
+
+  }
+
+}

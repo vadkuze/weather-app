@@ -1,0 +1,37 @@
+<div class='weather card shadow-lg rounded' [ngClass]=" data ? 'show' : 'hide'">
+  <ng-container *ngIf="data">
+    <div class="weather__head">
+      <h5 class='weather__title'>{{data.name}}, {{data.sys.country}}</h5>
+      <div class='weather__date'>
+        {{data.dt + '000' | date:'EEE'}}
+      </div>
+    </div>
+    <div class='weather__current'>
+      <div class='weather__body'>
+        <div class="weather__block weather__block--top">
+          <p class="weather__type">{{data.weather[0].main}}</p>
+          <img src="{{'http://openweathermap.org/img/wn/'+ data.weather[0].icon + '@2x.png'}}" alt="">
+          <p class='weather__description'>{{data.weather[0].description}}</p>
+        </div>
+        <div class="weather__block weather__block--bottom">
+          <p>
+            <span class="term">Temp:</span>
+            <span class="value">{{formatTemp('f',data.main.temp)}} °F / {{formatTemp('c',data.main.temp)}} °C</span>
+          </p>
+          <p>
+            <span class="term">Wind speed:</span>
+            <span class="value">{{formatSpeed(data.wind.speed)}} km/h</span>
+          </p>
+          <p>
+            <span class="term">Sunrise - Sunrise:</span>
+            <span class="value">{{data.sys.sunrise + '000' | date:'shortTime'}} -
+              {{data.sys.sunset + '000' | date:'shortTime'}}</span>
+          </p>
+        </div>
+      </div>
+      <div class='weather__footer' *ngIf="iconCls">
+        <i class="weather__icon" [ngClass]="iconCls" (click)="addCity(data.id)"></i>
+      </div>
+    </div>
+  </ng-container>
+</div>
